@@ -76,5 +76,28 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("stylist/:stylistId/update", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(Integer.parseInt(request.params(":stylistId")));
+      model.put("stylist", stylist);
+      model.put("template", "templates/update-stylist-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/stylist/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
+
+      String name = request.queryParams("stylist-name");
+      int wage = Integer.parseInt(request.queryParams("stylist-wage"));
+      //It is NOT updating old Stylist. It is saving a NEW one!!
+      stylist.updateName(name);
+      stylist.updateWage(wage);
+      String url = String.format("/stylist/%d", stylist.getId());
+      response.redirect(url);
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+
   }
 }
