@@ -9,21 +9,21 @@
     <h4><a href="/stylist/$stylist.getId()/client/$client.getId()">$client.getName()</a></h4>
   #end
   <br>
-  <form action="/stylist/:id/client/new" method="get">
+  <form action="/stylist/$stylist.getId()/client-new" method="get">
     <h3>Add a Client for $stylist.getName()</h3>
     <button type="submit" class="btn btn-primary">Add Client</button>
   </form>
 </div>
 
 <br>
-<form action="/stylist/:id/update" method="get">
+<form action="/stylist/$stylist.getId()/update" method="get">
   <h3>Click Here to Update $stylist.getName()'s information</h3>
   <button type="submit" class="btn btn-success">Update Stylist</button>
 </form>
 
 <br>
 
-<form action="/stylist/:id/delete" method="get">
+<form action="/stylist/$stylist.getId()/delete" method="get">
   <h3>Click Here to Delete $stylist.getName() from the System</h3>
   <button type="submit" class="btn btn-danger">Delete Stylist</button>
 </form>

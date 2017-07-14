@@ -1,0 +1,31 @@
+<!--client.vtl-->
+
+<h1>$client.getName()</h1>
+
+<div class="jumbotron">
+  <h3>Client's Age: $client.getAge()</h3>
+  <h3>Special Requirements: $client.getSpecialReq()</h3>
+  <h3>Client's Stylist: $stylist.getName()</h3>
+</div>
+
+<br>
+<form action="/stylist/$stylist.getId()/client/$client.getId()/update" method="get">
+  <h3>Click Here to Update $client.getName()'s information</h3>
+  <button type="submit" class="btn btn-success">Update Stylist</button>
+</form>
+
+<br>
+
+<form action="/stylist/$stylist.getId()/client/$client.getId()/delete" method="get">
+  <h3>Click Here to Delete $client.getName() from the System</h3>
+  <button type="submit" class="btn btn-danger">Delete Client</button>
+</form>
+
+<br>
+
+<form action="/" method="get">
+  <h3>Click Here to Return to Home Page</h3>
+  <button type="submit" class="btn btn-primary">Home</button>
+</form>
+
+<!--client.vtl-->
