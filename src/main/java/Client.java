@@ -45,6 +45,38 @@ public class Client {
     }
   }
 
+  public void update(String name, int age, String specialReq, int stylistId) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE clients SET name=:name, age=:age, specialReq=:specialReq, stylistId=:stylistId WHERE id=:id;";
+      con.createQuery(sql)
+        .addParameter("name", name)
+        .addParameter("age", age)
+        .addParameter("specialReq", specialReq)
+        .addParameter("stylistId", stylistId)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "DELETE FROM clients WHERE id=:id;";
+      con.createQuery(sql)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
+
+  public static List<Client> findStylistId(int stylistId) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients WHERE stylistId=:stylistId;";
+      List<Client> clientsByStylist = con.createQuery(sql)
+        .addParameter("stylistId", stylistId)
+        .executeAndFetch(Client.class);
+      return clientsByStylist;
+    }
+  }
+
 
   @Override
   public boolean equals(Object otherClient) {
