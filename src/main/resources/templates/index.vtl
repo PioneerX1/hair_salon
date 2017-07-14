@@ -1,0 +1,18 @@
+<!--index.vtl-->
+<h1>Happy Hairy's Hair Salon Manager Dashboard</h1>
+
+#if($stylists)
+  <h3>List of Stylists</h3>
+    <div class="jumbotron">
+    #foreach($stylist in $stylists)
+      <h4><a href="/stylist/$stylist.getId()">$stylist.getName()</a></h4>
+    #end
+  </div>
+#end
+
+<form action="/stylist/new" method="get">
+  <h3>Click Here to Add a New Stylist</h3>
+  <button type="submit" class="btn btn-primary">Add Stylist</button>
+</form>
+
+<!--index.vtl-->
