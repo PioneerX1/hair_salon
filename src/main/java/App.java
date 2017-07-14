@@ -25,5 +25,18 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    // get("stylist/new", (request, response) -> {
+    //
+    // })
+    //
+    // post("/stylist/:id", (request, response) -> {
+    //   Map<String, Object> model = new HashMap<String, Object>();
+    //   String name = request.queryParams("stylist-name");
+    //   int wage = Integer.parseInt(request.queryParams("stylist-wage"));
+    //   Stylist newStylist = new Stylist(name, wage);
+    //   newStylist.save();
+    //
+    // })
+
   }
 }

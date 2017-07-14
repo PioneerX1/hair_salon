@@ -1,27 +1,33 @@
 <!--stylist.vtl-->
 <h1>$stylist.getName()</h1>
 
-<h3>Hourly Compensation: $stylist.getWage()</h3>
+<h3>Hourly Compensation: $$stylist.getWage()</h3>
 
 <div class="jumbotron">
-  <h3>List of $stylist.getName() 's Clients: </h3>
-  <br>
+  <h3>List of $stylist.getName()'s Clients: </h3>
   #foreach ($client in $clients)
     <h4><a href="/stylist/$stylist.getId()/client/$client.getId()">$client.getName()</a></h4>
   #end
+  <br>
+  <form action="/stylist/:id/client/new" method="get">
+    <h3>Add a Client for $stylist.getName()</h3>
+    <button type="submit" class="btn btn-primary">Add Client</button>
+  </form>
 </div>
 
 <form action="/stylist/:id/update" method="get">
-  <h3>Click Here to Update $stylist.getName() 's information</h3>
+  <h3>Click Here to Update $stylist.getName()'s information</h3>
   <button type="submit" class="btn btn-success">Update Stylist</button>
 </form>
 
-<br><br>
+<br>
 
 <form action="/stylist/:id/delete" method="get">
   <h3>Click Here to Delete $stylist.getName() from the System</h3>
   <button type="submit" class="btn btn-danger">Delete Stylist</button>
 </form>
+
+<br>
 
 <form action="/" method="get">
   <h3>Click Here to Return to Home Page</h3>
