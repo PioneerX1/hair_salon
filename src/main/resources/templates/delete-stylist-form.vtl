@@ -2,11 +2,19 @@
 <h1>Delete Client</h1>
 
 <div class="jumbotron">
+#if($clients)
+<h3>Please reassign this Stylists clients before deleting.</h3>
+
+#else
+
   <h3>Are You SURE You Want to Delete $stylist.getName()?? This action CANNOT be undone!</h3>
   <form action="/stylist/$stylist.getId()/delete" method="post">
     <button type="submit" class="btn btn-danger">DELETE STYLIST</button>
   </form>
+#end
 </div>
+
+
 
 <br><br>
 

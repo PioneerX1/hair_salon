@@ -9,6 +9,12 @@
   <label for="client-req">Special Requirements: </label>
   <input id="client-req" name="client-req" value="$client.getSpecialReq()" class="form-control" type="text">
 
+  <select name="assigned-stylist">
+  #foreach ($stylist in $stylists)
+    <option value="$stylist.getId()">$stylist.getName()</option>
+    #end
+  </select>
+  
   <button type="submit" class="btn btn-success">Update Client's Info</button>
 </form>
 

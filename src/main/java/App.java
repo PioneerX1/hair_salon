@@ -102,6 +102,7 @@ public class App {
       Client client = Client.find(Integer.parseInt(request.params(":clientId")));
       model.put("stylist", stylist);
       model.put("client", client);
+      model.put("stylists", Stylist.all());
       model.put("template", "templates/update-client-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -113,7 +114,8 @@ public class App {
       String name = request.queryParams("client-name");
       int age = Integer.parseInt(request.queryParams("client-age"));
       String specialReq = request.queryParams("client-req");
-      client.update(name, age, specialReq, stylist.getId());
+      int stylistId = Integer.parseInt(request.queryParams("assigned-stylist"));
+      client.update(name, age, specialReq, stylistId);
 
       String url = String.format("/stylist/%d/client/%d", stylist.getId(), client.getId());
       response.redirect(url);
@@ -144,6 +146,7 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       Stylist stylist = Stylist.find(Integer.parseInt(request.params(":stylistId")));
       model.put("stylist", stylist);
+      model.put("clients", Client.findStylistId(stylist.getId()));
       model.put("template", "templates/delete-stylist-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
