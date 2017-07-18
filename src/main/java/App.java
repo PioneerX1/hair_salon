@@ -87,13 +87,35 @@ public class App {
     post("/stylist/:id/update", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       Stylist stylist = Stylist.find(Integer.parseInt(request.params(":id")));
-
       String name = request.queryParams("stylist-name");
       int wage = Integer.parseInt(request.queryParams("stylist-wage"));
-      //It is NOT updating old Stylist. It is saving a NEW one!!
       stylist.updateName(name);
       stylist.updateWage(wage);
       String url = String.format("/stylist/%d", stylist.getId());
+      response.redirect(url);
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("stylist/:stylistId/client/:clientId/update", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(Integer.parseInt(request.params(":stylistId")));
+      Client client = Client.find(Integer.parseInt(request.params(":clientId")));
+      model.put("stylist", stylist);
+      model.put("client", client);
+      model.put("template", "templates/update-client-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/stylist/:stylistId/client/:clientId/update", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(Integer.parseInt(request.params(":stylistId")));
+      Client client = Client.find(Integer.parseInt(request.params(":clientId")));
+      String name = request.queryParams("client-name");
+      int age = Integer.parseInt(request.queryParams("client-age"));
+      String specialReq = request.queryParams("client-req");
+      client.update(name, age, specialReq, stylist.getId());
+
+      String url = String.format("/stylist/%d/client/%d", stylist.getId(), client.getId());
       response.redirect(url);
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
