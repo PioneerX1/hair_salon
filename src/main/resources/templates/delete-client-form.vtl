@@ -1,0 +1,20 @@
+<!--delete-client-form.vtl-->
+<h1>Delete Client</h1>
+
+<div class="jumbotron">
+  <h3>Are You SURE You Want to Delete $client.getName()?? This action CANNOT be undone!</h3>
+  <form action="/stylist/$stylist.getId()/client/$client.getId()/delete" method="post">
+    <button type="submit" class="btn btn-danger">DELETE CLIENT</button>
+  </form>
+</div>
+
+<br><br>
+
+<h3>Click Here to View $client.getName()'s Profile Again</h3>'
+<a href="/stylist/$stylist.getId()/client/$client.getId()"><button class="btn btn-success">Home</button></a>
+
+<h3>Click Here to Return to Home Page</h3>
+<a href="/"><button class="btn btn-primary">Home</button></a>
+
+
+<!--delete-client-form.vtl-->
