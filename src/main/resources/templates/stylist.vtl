@@ -9,17 +9,19 @@
     <h4><a href="/stylist/$stylist.getId()/client/$client.getId()">$client.getName()</a></h4>
   #end
   <br>
-  <form action="/stylist/$stylist.getId()/client-new" method="get">
-    <h3>Add a Client for $stylist.getName()</h3>
-    <button type="submit" class="btn btn-primary">Add Client</button>
+
+<h3>Add a Client for $stylist.getName()</h3>
+
+<a href="/stylist/$stylist.getId()/client-new"<button class="btn btn-primary">Add Client</button></a>
+
   </form>
 </div>
 
 <br>
-<form action="/stylist/$stylist.getId()/update" method="get">
-  <h3>Click Here to Update $stylist.getName()'s information</h3>
-  <button type="submit" class="btn btn-success">Update Stylist</button>
-</form>
+
+<h3>Click Here to Update $stylist.getName()'s information</h3>
+<a href="/stylist/$stylist.getId()/update"><button class="btn btn-success">Update Stylist</button></a>
+
 
 <br>
 
@@ -30,9 +32,8 @@
 
 <br>
 
-<form action="/" method="get">
-  <h3>Click Here to Return to Home Page</h3>
-  <button type="submit" class="btn btn-primary">Home</button>
-</form>
+
+<h3>Click Here to Return to Home Page</h3>
+<a href="/"><button class="btn btn-primary">Home</button></a>
 
 <!--stylist.vtl-->

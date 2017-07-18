@@ -1,7 +1,7 @@
 <!--add-stylist-form.vtl-->
 <h1>Update Stylist</h1>
 
-<form action="/stylist/:id" method="post">
+<form action="/stylist/$stylist.getId()" method="post">
   <label for="stylist-name">Name of Stylist: </label>
   <input id="stylist-name" name="stylist-name" value="$stylist.getName()" class="form-control" type="text">
   <label for="stylist-wage">Hourly Compensation: </label>
@@ -11,9 +11,9 @@
 </form>
 
 <br><br>
-<form action="/" method="get">
-  <h3>Click Here to Return to Home Page</h3>
-  <button type="submit" class="btn btn-primary">Home</button>
-</form>
+
+<h3>Click Here to Return to Home Page</h3>
+<a href="/"><button class="btn btn-primary">Home</button></a>
+
 
 <!--add-stylist-form.vtl-->

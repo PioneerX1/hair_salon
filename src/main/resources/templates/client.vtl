@@ -9,23 +9,21 @@
 </div>
 
 <br>
-<form action="/stylist/$stylist.getId()/client/$client.getId()/update" method="get">
-  <h3>Click Here to Update $client.getName()'s information</h3>
-  <button type="submit" class="btn btn-success">Update Stylist</button>
-</form>
+
+<h3>Click Here to Update $client.getName()'s information</h3>
+<a href="/stylist/$stylist.getId()/client/$client.getId()/update"><button class="btn btn-success">Update Stylist</button></a>
+
 
 <br>
 
 <form action="/stylist/$stylist.getId()/client/$client.getId()/delete" method="get">
-  <h3>Click Here to Delete $client.getName() from the System</h3>
-  <button type="submit" class="btn btn-danger">Delete Client</button>
+<h3>Click Here to Delete $client.getName() from the System</h3>
+<button type="submit" class="btn btn-danger">Delete Client</button>
 </form>
 
 <br>
 
-<form action="/" method="get">
-  <h3>Click Here to Return to Home Page</h3>
-  <button type="submit" class="btn btn-primary">Home</button>
-</form>
+<h3>Click Here to Return to Home Page</h3>
+<a href="/"><button class="btn btn-primary">Home</button></a>
 
 <!--client.vtl-->
