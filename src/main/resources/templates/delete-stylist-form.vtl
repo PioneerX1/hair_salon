@@ -2,7 +2,7 @@
 <h1>Delete Client</h1>
 
 <div class="jumbotron">
-#if($clients)
+#if($empty == false)
 <h3>Please reassign this Stylists clients before deleting.</h3>
 
 #else
@@ -19,7 +19,7 @@
 <br><br>
 
 <h3>Click Here to View $stylist.getName()'s Profile Again</h3>'
-<a href="/stylist/$stylist.getId()"><button class="btn btn-success">Home</button></a>
+<a href="/stylist/$stylist.getId()"><button class="btn btn-success">View Stylist Profile</button></a>
 
 <h3>Click Here to Return to Home Page</h3>
 <a href="/"><button class="btn btn-primary">Home</button></a>

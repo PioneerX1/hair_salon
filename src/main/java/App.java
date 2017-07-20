@@ -3,6 +3,7 @@ import java.util.Map;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
+import java.util.List;
 
 public class App {
   public static void main(String[] args) {
@@ -146,7 +147,13 @@ public class App {
       Map<String, Object> model = new HashMap<String, Object>();
       Stylist stylist = Stylist.find(Integer.parseInt(request.params(":stylistId")));
       model.put("stylist", stylist);
-      model.put("clients", Client.findStylistId(stylist.getId()));
+      List<Client> tempClients = Client.findStylistId(stylist.getId());
+      boolean empty = false;
+      if (tempClients.isEmpty()) {
+        empty = true;
+      } 
+      model.put("empty", empty);
+      // model.put("clients", Client.findStylistId(stylist.getId()));
       model.put("template", "templates/delete-stylist-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
